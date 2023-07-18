@@ -1,0 +1,551 @@
+{
+    "@context": "http://www.w3.org/ns/csvw",
+    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dataset",
+    "tables": [
+        {
+            "url": "average-speed-on-local-a-roads-by-local-authority-in-england.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "titles": "Country/Regional Local Authority",
+                        "name": "country_regional_local_authority",
+                        "suppressOutput": true
+                    },
+                    {
+                        "titles": "ONS area code",
+                        "name": "ons_area_code",
+                        "propertyUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/statistical-geography",
+                        "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+ons_area_code}",
+                        "required": true
+                    },
+                    {
+                        "titles": "Period",
+                        "name": "period",
+                        "propertyUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/period",
+                        "valueUrl": "period.csv#{+period}",
+                        "required": true
+                    },
+                    {
+                        "titles": "Observation",
+                        "name": "observation",
+                        "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people",
+                        "propertyUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#measure/count-of-people",
+                        "datatype": "float",
+                        "required": true
+                    },
+                    {
+                        "name": "virt_slice",
+                        "virtual": true,
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "qb:Slice"
+                    },
+                    {
+                        "name": "virt_slice_structure",
+                        "virtual": true,
+                        "propertyUrl": "qb:sliceStructure",
+                        "valueUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#slice/cross-measures"
+                    },
+                    {
+                        "name": "virt_obs_observation",
+                        "virtual": true,
+                        "propertyUrl": "qb:observation",
+                        "valueUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people"
+                    },
+                    {
+                        "name": "virt_obs_observation_meas",
+                        "virtual": true,
+                        "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people",
+                        "propertyUrl": "qb:measureType",
+                        "valueUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#measure/count-of-people"
+                    },
+                    {
+                        "name": "virt_obs_observation_unit",
+                        "virtual": true,
+                        "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people",
+                        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure",
+                        "valueUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#unit/speed-in-miles-per-hour"
+                    },
+                    {
+                        "name": "virt_dim_observation_ons_area_code",
+                        "virtual": true,
+                        "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people",
+                        "propertyUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/statistical-geography",
+                        "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+ons_area_code}"
+                    },
+                    {
+                        "name": "virt_dim_observation_period",
+                        "virtual": true,
+                        "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people",
+                        "propertyUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/period",
+                        "valueUrl": "period.csv#{+period}"
+                    },
+                    {
+                        "name": "virt_obs_observation_type",
+                        "virtual": true,
+                        "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "qb:Observation"
+                    },
+                    {
+                        "name": "virt_dataSet_observation",
+                        "virtual": true,
+                        "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#obs/{ons_area_code},{period}@count-of-people",
+                        "propertyUrl": "qb:dataSet",
+                        "valueUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dataset"
+                    }
+                ],
+                "foreignKeys": [
+                    {
+                        "columnReference": "period",
+                        "reference": {
+                            "resource": "period.csv",
+                            "columnReference": "uri_identifier"
+                        }
+                    }
+                ],
+                "primaryKey": [
+                    "ons_area_code",
+                    "period"
+                ],
+                "aboutUrl": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#slice/{ons_area_code},{period}"
+            }
+        },
+        {
+            "url": "period.csv",
+            "tableSchema": "period.table.json",
+            "suppressOutput": true
+        }
+    ],
+    "rdfs:seeAlso": [
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/period",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/period"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/period"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 2
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#class/period",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.w3.org/2000/01/rdf-schema#Class"
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/statistical-geography",
+            "@type": [
+                "http://purl.org/linked-data/cube#CodedProperty",
+                "http://purl.org/linked-data/cube#DimensionProperty",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Statistical Geography"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#class/statistical-geography"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#structure",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#DataStructureDefinition"
+            ],
+            "http://purl.org/linked-data/cube#component": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/period"
+                },
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/unit"
+                },
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/count-of-people"
+                },
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/measure-type"
+                },
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/period"
+                },
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                },
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                },
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/statistical-geography"
+                },
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#measure/count-of-people"
+                }
+            ],
+            "http://purl.org/linked-data/cube#sliceKey": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#slice/cross-measures"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/unit",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#attribute": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentRequired": [
+                {
+                    "@value": true
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 4
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/measure-type",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 3
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#class/statistical-geography",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.w3.org/2000/01/rdf-schema#Class"
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/period",
+            "@type": [
+                "http://purl.org/linked-data/cube#CodedProperty",
+                "http://purl.org/linked-data/cube#DimensionProperty",
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#codeList": [
+                {
+                    "@id": "period.csv#code-list"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Period"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#class/period"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#csvcubed-build-activity",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.w3.org/ns/prov#Activity"
+            ],
+            "http://www.w3.org/ns/prov#used": [
+                {
+                    "@id": "https://github.com/GSS-Cogs/csvcubed/releases/tag/v0.4.4"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/count-of-people",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#measure/count-of-people"
+                }
+            ],
+            "http://purl.org/linked-data/cube#measure": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#measure/count-of-people"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 5
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#component/statistical-geography",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSpecification",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 1
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#slice/cross-measures",
+            "@type": [
+                "http://purl.org/linked-data/cube#SliceKey",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSet"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/statistical-geography"
+                },
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dimension/period"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dataset",
+            "@type": [
+                "http://www.w3.org/ns/dcat#Dataset",
+                "http://purl.org/linked-data/cube#Attachable",
+                "http://purl.org/linked-data/cube#DataSet",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.w3.org/ns/dcat#Resource"
+            ],
+            "http://purl.org/dc/terms/creator": [
+                {
+                    "@id": "https://www.gov.uk/government/organisations/department-for-transport"
+                }
+            ],
+            "http://purl.org/dc/terms/description": [
+                {
+                    "@type": "https://www.w3.org/ns/iana/media-types/text/markdown#Resource",
+                    "@value": "Average speed on local 'A' roads by local authority in England"
+                }
+            ],
+            "http://purl.org/dc/terms/identifier": [
+                {
+                    "@value": "Average speed on local 'A' roads by local authority in England"
+                }
+            ],
+            "http://purl.org/dc/terms/issued": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "@value": "2023-07-14T15:43:51.012330"
+                }
+            ],
+            "http://purl.org/dc/terms/license": [
+                {
+                    "@id": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+                }
+            ],
+            "http://purl.org/dc/terms/modified": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                    "@value": "2023-07-14T15:43:51.012330"
+                }
+            ],
+            "http://purl.org/dc/terms/publisher": [
+                {
+                    "@id": "https://www.gov.uk/government/organisations/office-for-national-statistics"
+                }
+            ],
+            "http://purl.org/dc/terms/title": [
+                {
+                    "@language": "en",
+                    "@value": "Average speed on local 'A' roads by local authority in England"
+                }
+            ],
+            "http://purl.org/linked-data/cube#structure": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#structure"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Average speed on local 'A' roads by local authority in England"
+                }
+            ],
+            "http://www.w3.org/ns/dcat#keyword": [
+                {
+                    "@language": "en",
+                    "@value": "delays"
+                },
+                {
+                    "@language": "en",
+                    "@value": "driving"
+                },
+                {
+                    "@language": "en",
+                    "@value": "congestion"
+                },
+                {
+                    "@language": "en",
+                    "@value": "roads"
+                },
+                {
+                    "@language": "en",
+                    "@value": "speed"
+                }
+            ],
+            "http://www.w3.org/ns/prov#wasGeneratedBy": [
+                {
+                    "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#csvcubed-build-activity"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#measure/count-of-people",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://purl.org/linked-data/cube#MeasureProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Count of people"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "http://www.w3.org/2001/XMLSchema#float"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "https://purl.org/csv-cubed/resources/measures#people"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#dependency/period",
+            "@type": [
+                "http://rdfs.org/ns/void#Dataset",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://rdfs.org/ns/void#dataDump": [
+                {
+                    "@id": "./period.csv-metadata.json"
+                }
+            ],
+            "http://rdfs.org/ns/void#uriSpace": [
+                {
+                    "@value": "period.csv#"
+                }
+            ]
+        },
+        {
+            "@id": "average-speed-on-local-a-roads-by-local-authority-in-england.csv#unit/speed-in-miles-per-hour",
+            "@type": [
+                "http://qudt.org/schema/qudt/Unit",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://www.ontology-of-units-of-measure.org/resource/om-2/Unit"
+            ],
+            "http://qudt.org/schema/qudt/isScalingOf": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasFactor": [
+                {
+                    "@type": "http://www.w3.org/2001/XMLSchema#float",
+                    "@value": "1.0"
+                }
+            ],
+            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+                {
+                    "@id": "http://qudt.org/vocab/unit/NUM"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Speed in miles per hour"
+                }
+            ]
+        }
+    ]
+}

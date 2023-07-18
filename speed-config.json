@@ -1,0 +1,37 @@
+{
+    "$schema": "https://purl.org/csv-cubed/qube-config/v1",
+    "title": "Average speed on local 'A' roads by local authority in England",
+    "description": "Average speed on local 'A' roads by local authority in England",
+    "creator": "https://www.gov.uk/government/organisations/department-for-transport",
+    "publisher": "https://www.gov.uk/government/organisations/office-for-national-statistics",
+    "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "keywords": [
+        "congestion",
+        "speed",
+        "roads",
+        "driving",
+        "delays"
+    ],
+    "columns": {
+        "Country/Regional Local Authority": false,
+        "ONS area code": {
+            "from_template": "statistical-geography"
+        },
+        "Period": {  
+            "label": "Period",
+            "type": "dimension"
+        },
+        "Observation": {
+            "type": "observations",
+            "measure": {
+                "label": "Count of people",
+                "from_existing": "https://purl.org/csv-cubed/resources/measures#people"
+            },
+            "data_type": "float",
+            "unit": {
+                "label": "Speed in miles per hour",
+                "from_existing": "http://qudt.org/vocab/unit/NUM"
+            }
+        }
+    }
+}
